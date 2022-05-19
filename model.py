@@ -12,6 +12,8 @@ import matplotlib.pyplot as plt
 from pre_process_data import data_process
 import pandas as pd
 
+
+
 '''
 TCN(
     nb_filters=64,
@@ -53,7 +55,10 @@ n_splits=5
 #nb, nb_test = 40, 20
 data_path = "./data/my_data.csv"
 checkpoint_path = "./"
-model_path = "./my_model"
+model_path = "./my_model3"
+logdir = "./log"
+
+#tf.debugging.experimental.enable_dump_debug_info(logdir, tensor_debug_mode="FULL_HEALTH", circular_buffer_size=-1)
 
 def model_def():
     tcn_layer = TCN(
@@ -144,7 +149,7 @@ if __name__ == "__main__":
     
     # uncomment to train the model
     train(model, 
-          epochs=20, 
+          epochs=1, 
           verbose=2, 
           enable_cb=False, # not save the checkpoints
           data_path=data_path, checkpoint_path=checkpoint_path)
@@ -157,7 +162,7 @@ if __name__ == "__main__":
     print("Restored model, accuracy: {:5.2f}%".format(100 * acc))
 
     #save to .pb model files
-    model.save("./my_model2")
+    model.save(model_path)
     
     #print(model.predict(x[0, 0, :].reshape(1, 1, -1)))
     plt.plot(np.arange(np.shape(x)[0]), model.predict(x.reshape(b, s, i)), color='y', label='prediction')
