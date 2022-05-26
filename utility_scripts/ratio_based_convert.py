@@ -15,7 +15,7 @@ def label_ratio(index, label_list, delta_window, left_add=0, right_add=0):
     di = np.abs(np.floor(delta_window / 2))
     label = label_list[index]
     if di + left_add < index < len(label_list) - di - right_add:
-        return np.sum(np.array(label_list[int(index-di-left_add):int(index+di+right_add)]) == label) / (2 * di + left_add + right_add)
+        return np.sum(np.array(label_list[int(index-di-left_add):int(index+di+right_add+1)]) == label) / (2 * di + left_add + right_add + 1)
     elif index <= di + left_add:
         return np.sum(np.array(label_list[:int(index+di+right_add)]) == label) / (index + di + right_add)
     else:
