@@ -206,7 +206,7 @@ def cmprint(cm, title):
     Recall = TP / (TP + FN)
     print(f"{title} Accuracy: {Accuracy: .2f} Precision: {Precision: .2f} Recall: {Recall: .2f}")
 
-###############################################convert
+######################## convert algrithms #######################
 LABEL_NROMAL = 0
 LABEL_FALL = 1
 
